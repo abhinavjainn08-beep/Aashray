@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aashray</title>
+<meta name="theme-color" content="#f2f7fc">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="landing" aria-label="Aashray front page">
+  <div class="l-hero">
+    <nav class="l-nav" aria-label="Front page">
+      <a class="home" href="#"><svg class="mark" viewBox="0 0 22 34" aria-hidden="true">
+      <rect x="3" y="2" width="16" height="30" rx="3" fill="#ffffff" stroke="#3f84b8" stroke-width="1.5"/>
+      <rect x="3" y="15" width="16" height="17" rx="3" fill="#3f84b8"/>
+      <path d="M3 9h6M3 22h6M13 9h6M13 22h6" stroke="#16212c" stroke-width="1"/>
+      <path d="M1 15h20" stroke="#f26a3d" stroke-width="1.5" stroke-dasharray="3 2"/>
+    </svg><span class="wordmark"><span class="dev" lang="hi">आश्रय</span><span class="lat">Aashray</span></span></a>
+      <a class="btn small" href="#demo">Open the demo</a>
+    </nav>
+    <div class="l-copy">
+      <h1>Flood rescue that reaches the most vulnerable women first.</h1>
+      <p>Before monsoon, health workers note which women in each ward would need a vehicle to get out: pregnant, elderly or disabled. They do it with her consent. When a flood alert goes out, Aashray ranks who leaves first and texts each driver their pickups.</p>
+      <div class="l-actions"><a class="btn big" href="#demo">Open the demo</a><a class="btn light big" href="#how">How it works</a></div>
+    </div>
+    <img class="scene" src="scene.png" alt="Pixel illustration of a river valley with a flood gauge standing in the river, a village on one bank and a shelter on the other" width="340" height="190">
+  </div>
+  <div class="l-lower">
+    <section class="l-why">
+      <h2>First come, first served leaves some women behind</h2>
+      <ul>
+        <li>A woman in late pregnancy, or in a wheelchair, cannot walk to the road where the bus is waiting.</li>
+        <li>The nearest shelter may be full, cut off by water, or out of what she needs.</li>
+        <li>Many women have no smartphone, and the data network is the first thing to fail.</li>
+      </ul>
+    </section>
+
+    <section class="l-try" id="try">
+      <div class="try-copy">
+        <h2>Move the water. Watch the order change.</h2>
+        <p>This is the same scoring the console uses, run on the sample care list. As the river rises in the low-lying wards, women there move up. Someone bedridden and on oxygen stays near the top even when the water is low, because she cannot leave without help.</p>
+        <div class="try-control">
+          <label for="lvl">River level <b class="try-level">Calm</b></label>
+          <input id="lvl" type="range" min="0" max="100" value="0" step="1">
+          <div class="try-water" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+      <ol class="try-list" aria-label="Women ranked by priority for transport"></ol>
+    </section>
+
+    <section class="l-how" id="how">
+      <h2>How Aashray works</h2>
+      <div class="l-step">
+        <div><h3>1. Before the season, a health worker builds a care list</h3><p>She adds a woman only after the woman agrees. The list holds initials, ward, and what the woman needs: a stretcher, a wheelchair, a late pregnancy, a newborn, dialysis.</p></div>
+        <img src="shot-carelist.png" width="620" height="470" loading="lazy" alt="The form for adding a woman to the care list, with a consent tick box">
+      </div>
+      <div class="l-step">
+        <div><h3>2. When the alert is raised, the list ranks itself</h3><p>Each woman gets a score out of 100 from her medical need, pregnancy or newborn, mobility, age, how bad the flood is in her ward, and how far the nearest open shelter is. Tap "Why?" on any row to see the points. The coordinator can pin someone higher.</p></div>
+        <img src="shot-queue.png" width="585" height="400" loading="lazy" alt="The ranked queue showing a bedridden woman first with her score breakdown">
+      </div>
+      <div class="l-step">
+        <div><h3>3. Drivers get one text, and women can ask for help by SMS</h3><p>Each vehicle receives a single message listing its pickups and drop-off shelter. A woman without a smartphone can text <code>HELP W3 P34</code> or give a missed call, and a person calls her back before anyone is sent.</p></div>
+        <img class="narrow" src="shot-phone.png" width="360" height="330" loading="lazy" alt="A basic phone showing a help text and the automated reply">
+      </div>
+    </section>
+
+    <section class="l-priv">
+      <h2>It is her information, so she stays in control</h2>
+      <dl>
+        <div><dt>She says yes first</dt><dd>Nobody goes on the care list without her consent.</dd></div>
+        <div><dt>Dispatchers see little</dt><dd>Initials and ward only. Her address and phone go to the assigned driver, in the pickup text.</dd></div>
+        <div><dt>Locked until it matters</dt><dd>The list opens only while a flood alert is active, and every unlock is written to the audit log.</dd></div>
+        <div><dt>She can leave any time</dt><dd>One tap removes her record.</dd></div>
+      </dl>
+    </section>
+
+    <div class="l-end"><a class="btn big" href="#demo">Open the demo</a></div>
+    <p class="l-foot">Prototype with sample data. SMS and voice calls are simulated. Built for the IEEE-MSB SAMWAD Ideathon, Problem Statement 5, by Abhinav Jain, VIT Bhopal University.</p>
+  </div>
+</section>
+
+<header class="top">
+  <div class="brand">
+    <a class="home" href="#" aria-label="Back to the front page"><svg class="mark" viewBox="0 0 22 34" aria-hidden="true">
+      <rect x="3" y="2" width="16" height="30" rx="3" fill="#ffffff" stroke="#3f84b8" stroke-width="1.5"/>
+      <rect x="3" y="15" width="16" height="17" rx="3" fill="#3f84b8"/>
+      <path d="M3 9h6M3 22h6M13 9h6M13 22h6" stroke="#16212c" stroke-width="1"/>
+      <path d="M1 15h20" stroke="#f26a3d" stroke-width="1.5" stroke-dasharray="3 2"/>
+    </svg>
+    <span class="wordmark"><span class="dev" lang="hi">आश्रय</span><span class="lat">Aashray</span></span></a>
+    <span class="badge">Prototype with sample data</span>
+  </div>
+  <div class="controls">
+    <label class="role">Viewing as
+      <select id="role" aria-label="Role">
+        <option value="dispatch">Dispatcher</option>
+        <option value="health">Health worker</option>
+        <option value="volunteer">Shelter volunteer</option>
+      </select>
+    </label>
+    <label class="switch"><input type="checkbox" id="offline"><span class="track" aria-hidden="true"></span><span>Simulate offline</span></label>
+    <span id="netchip" class="chip ok">Online</span>
+    <span id="outbox" class="chip" hidden></span>
+    <button id="reset" class="ghost" title="Restore the sample data">Reset demo</button>
+  </div>
+</header>
+
+<div id="alertbar" class="alertbar" hidden></div>
+
+<nav class="tabs" id="tabs" role="tablist"></nav>
+
+<main>
+  <section id="tab-dispatch" class="panel" hidden></section>
+  <section id="tab-registry" class="panel" hidden></section>
+  <section id="tab-shelters" class="panel" hidden></section>
+  <section id="tab-phone" class="panel" hidden></section>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="triage.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
