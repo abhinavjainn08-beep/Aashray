@@ -1,5 +1,5 @@
 // cache first, so the app opens offline
-const CACHE = 'aashray-v6';
+const CACHE = 'aashray-v8';
 const FILES = ['./', './index.html', './style.css', './triage.js', './data.js', './app.js', './landing.js', './manifest.webmanifest', './icon.svg', './hero.jpg', './scene.png', './shot-carelist.png', './shot-queue.png', './shot-phone.png'];
 
 self.addEventListener('install', (e) => {

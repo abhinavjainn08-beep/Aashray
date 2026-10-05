@@ -225,12 +225,12 @@ details > summary { cursor: pointer; font-weight: 600; }
 /* front page */
 body:not(.on-landing) #landing { display: none; }
 body.on-landing .top, body.on-landing #alertbar, body.on-landing .tabs, body.on-landing main, body.on-landing #toast { display: none !important; }
-.l-hero { position: relative; overflow: hidden; background: #e2ecf9 url(hero.jpg) center bottom / min(100%, 1672px) auto no-repeat; padding-bottom: calc(min(100vw, 1672px) * .50); }
+.l-hero { position: relative; overflow: hidden; background: #e2ecf9 url(hero.jpg) center bottom / 100% auto no-repeat; min-height: calc(100vw * .862); padding-bottom: calc(100vw * .40); }
 .scene { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; image-rendering: pixelated; pointer-events: none; }
 .l-nav { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 16px; max-width: 760px; margin: 22px auto 0; padding: 8px 10px 8px 16px; border-radius: 999px; background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.9); backdrop-filter: blur(8px); }
-.l-copy { position: relative; z-index: 2; max-width: 860px; margin: clamp(48px, 9vh, 96px) auto 0; padding: 0 24px; text-align: center; }
-.l-copy h1 { font-size: clamp(2.1rem, 5vw, 3.7rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; max-width: 18ch; margin: 0 auto; }
-.l-copy p { max-width: 58ch; margin: 22px auto 28px; font-size: 1.1rem; color: #1b2b3b; }
+.l-copy { position: relative; z-index: 2; max-width: 860px; margin: clamp(24px, 4.5vh, 52px) auto 0; padding: 0 24px; text-align: center; }
+.l-copy h1 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; max-width: 18ch; margin: 0 auto; }
+.l-copy p { max-width: 56ch; margin: 16px auto 22px; font-size: 1.05rem; color: #1b2b3b; }
 .l-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .l-lower { max-width: 1040px; margin: 0 auto; padding: 24px 24px 64px; }
 .l-lower h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 600; letter-spacing: -.015em; line-height: 1.15; max-width: 22ch; }
