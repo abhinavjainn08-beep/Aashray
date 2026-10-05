@@ -1,0 +1,12 @@
+{
+  "name": "Aashray",
+  "short_name": "Aashray",
+  "description": "Priority evacuation registry prototype",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f6f5",
+  "theme_color": "#0f3d3e",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
