@@ -225,13 +225,12 @@ details > summary { cursor: pointer; font-weight: 600; }
 /* front page */
 body:not(.on-landing) #landing { display: none; }
 body.on-landing .top, body.on-landing #alertbar, body.on-landing .tabs, body.on-landing main, body.on-landing #toast { display: none !important; }
-.l-hero { position: relative; overflow: hidden; min-height: clamp(660px, 94vh, 880px); background: linear-gradient(#d9e9f7 0%, #eaf3fb 55%, var(--bg) 100%); }
-.l-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: linear-gradient(to top, var(--bg), rgba(242,247,252,0)); pointer-events: none; }
+.l-hero { position: relative; overflow: hidden; background: #e2ecf9 url(hero.jpg) center bottom / min(100%, 1672px) auto no-repeat; padding-bottom: calc(min(100vw, 1672px) * .50); }
 .scene { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; image-rendering: pixelated; pointer-events: none; }
 .l-nav { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 16px; max-width: 760px; margin: 22px auto 0; padding: 8px 10px 8px 16px; border-radius: 999px; background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.9); backdrop-filter: blur(8px); }
 .l-copy { position: relative; z-index: 2; max-width: 860px; margin: clamp(48px, 9vh, 96px) auto 0; padding: 0 24px; text-align: center; }
 .l-copy h1 { font-size: clamp(2.1rem, 5vw, 3.7rem); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; max-width: 18ch; margin: 0 auto; }
-.l-copy p { max-width: 58ch; margin: 22px auto 28px; font-size: 1.1rem; color: #33465a; }
+.l-copy p { max-width: 58ch; margin: 22px auto 28px; font-size: 1.1rem; color: #1b2b3b; }
 .l-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .l-lower { max-width: 1040px; margin: 0 auto; padding: 24px 24px 64px; }
 .l-lower h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 600; letter-spacing: -.015em; line-height: 1.15; max-width: 22ch; }
@@ -279,8 +278,7 @@ body.on-landing .top, body.on-landing #alertbar, body.on-landing .tabs, body.on-
 @media (max-width: 800px) {
   .l-why, .l-step, .l-step:nth-of-type(even), .l-priv dl { grid-template-columns: 1fr; }
   .l-step:nth-of-type(even) > img { order: 0; }
-  .l-hero { min-height: 640px; }
-}
+  }
 
 @media (prefers-reduced-motion: reduce) {
   .rise .water { animation: none; }
