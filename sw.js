@@ -1,5 +1,5 @@
 // network first so updates show up, cache as the offline fallback
-const CACHE = 'aashray-v11';
+const CACHE = 'aashray-v12';
 const FILES = ['./', './index.html', './style.css', './triage.js', './data.js', './app.js', './landing.js', './manifest.webmanifest', './icon.svg', './hero-wide.jpg', './hero-m.jpg', './scene.png', './shot-carelist.png', './shot-queue.png', './shot-phone.png'];
 
 self.addEventListener('install', (e) => {

@@ -292,3 +292,16 @@ body.on-landing .top, body.on-landing #alertbar, body.on-landing .tabs, body.on-
   .rise .water { animation: none; }
   .water, .meter > i, .urg .seg, .switch .track, .switch .track::after { transition: none; }
 }
+
+/* mobile fit for the console */
+.card, .grid2 > *, section[id^="tab-"] > * { min-width: 0; }
+.gauges { max-width: 100%; }
+.table-wrap, .queue-wrap { max-width: 100%; overflow-x: auto; }
+@media (max-width: 700px) {
+  .gauges { grid-auto-columns: 128px; }
+  .queue { display: block; overflow-x: auto; max-width: 100%; }
+  .queue .flags { max-width: none; }
+  #tabs { overflow-x: auto; flex-wrap: nowrap; }
+  #tabs button { white-space: nowrap; flex: none; }
+  .map { min-width: 0; }
+}
