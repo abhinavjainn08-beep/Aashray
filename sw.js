@@ -1,6 +1,6 @@
 // network first so updates show up, cache as the offline fallback
-const CACHE = 'aashray-v12';
-const FILES = ['./', './index.html', './style.css', './triage.js', './data.js', './app.js', './landing.js', './manifest.webmanifest', './icon.svg', './hero-wide.jpg', './hero-m.jpg', './scene.png', './shot-carelist.png', './shot-queue.png', './shot-phone.png'];
+const CACHE = 'aashray-v17';
+const FILES = ['./', './index.html', './style.css', './triage.js', './data.js', './app.js', './landing.js', './manifest.webmanifest', './icon.svg', './favicon.svg', './hero-wide.jpg', './hero-m.jpg', './scene.png', './shot-carelist.png', './shot-queue.png', './shot-phone.png'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(FILES.map(f => c.add(new Request(f, { cache: 'reload' }))))).then(() => self.skipWaiting()));
