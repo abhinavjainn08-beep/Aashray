@@ -321,7 +321,7 @@
         <p class="muted">Nothing is sent until you confirm. Stretcher cases go to ambulances only.</p>`;
       if (pl.assignments.length) {
         planHtml += `<table><thead><tr><th>Who</th><th>Vehicle</th><th>Destination</th><th>Seats</th></tr></thead><tbody>
-          ${pl.assignments.map(x => `<tr><td><b>${esc(x.person.initials)}</b> ${bandChip(x.band)}</td><td>${esc(x.vehicle.label)}</td><td>${esc(x.shelter ? x.shelter.name : 'no open shelter')}</td><td class="num">${T.seatsNeeded(x.person)}</td></tr>`).join('')}</tbody></table>`;
+          ${pl.assignments.map(x => `<tr><td><b>${esc(x.person.initials)}</b> ${bandChip(x.band)}</td><td>${esc(x.vehicle.label)}</td><td>${esc(x.shelter ? x.shelter.name : 'no open shelter')}${x.warning ? `<div class="flags">Check: ${esc(x.warning)}</div>` : ''}</td><td class="num">${T.seatsNeeded(x.person)}</td></tr>`).join('')}</tbody></table>`;
       } else planHtml += `<div class="empty">No pickups can be assigned right now.</div>`;
       if (pl.unassigned.length) planHtml += `<div class="note"><b>Not assigned:</b> ${pl.unassigned.map(u => `${esc(u.person.initials)} (${esc(u.reason)})`).join('; ')}</div>`;
       if (pl.waitingCallback.length) planHtml += `<div class="note"><b>Waiting for a callback before dispatch:</b> ${pl.waitingCallback.map(p => esc(p.id)).join(', ')}</div>`;

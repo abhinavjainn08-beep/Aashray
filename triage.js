@@ -125,26 +125,46 @@
 
   function planDispatch(ranked, vehicles, shelters, now) {
     const remaining = new Map(vehicles.map(v => [v.id, v.seats]));
+    const room = new Map(shelters.map(s => [s.id, s.capacity - s.occupied]));
     const assignments = [];
     const unassigned = [];
-    const openShelters = shelters.filter(s => s.open && s.occupied < s.capacity);
+    const openShelters = shelters.filter(s => s.open);
+    const ambSeats = () => vehicles.filter(v => v.type === 'ambulance').reduce((n, v) => n + remaining.get(v.id), 0);
 
-    for (const row of ranked) {
+    ranked.forEach((row, idx) => {
       const w = row.person;
       const need = seatsNeeded(w);
       const stretcher = needsStretcher(w);
+      // keep ambulance seats free for stretcher cases further down the list
+      const reserve = stretcher ? 0 : ranked.slice(idx + 1)
+        .filter(r => needsStretcher(r.person)).reduce((n, r) => n + seatsNeeded(r.person), 0);
       const candidates = vehicles
-        .filter(v => remaining.get(v.id) >= need && (!stretcher || v.type === 'ambulance'))
+        .filter(v => remaining.get(v.id) >= need)
+        .filter(v => stretcher ? v.type === 'ambulance' : (v.type !== 'ambulance' || ambSeats() - need >= reserve))
         .sort((a, b) => dist(a.pos, w.pos) - dist(b.pos, w.pos));
       const v = candidates[0];
-      if (!v) { unassigned.push({ person: w, reason: stretcher ? 'no ambulance with free seats' : 'no vehicle with free seats' }); continue; }
+      if (!v) {
+        unassigned.push({ person: w, reason: stretcher ? 'no ambulance with free seats'
+          : vehicles.some(x => remaining.get(x.id) >= need) ? 'ambulance seats held for stretcher cases' : 'no vehicle with free seats' });
+        return;
+      }
 
-      const dest = openShelters
+      // shelter: has room for her and her infants; clinical cases need a shelter with medical cover
+      const people = 1 + (w.infants || 0);
+      const clinical = medicalFactor(w.medical) >= 0.7 || w.pregnancyWeeks >= 36;
+      const fits = openShelters.filter(s => room.get(s.id) >= people);
+      const capable = clinical ? fits.filter(s => s.medical >= 0.5) : fits;
+      const pool = capable.length ? capable : fits;
+      const dest = pool
         .map(s => ({ s, st: shelterStatus(s, now) }))
         .sort((a, b) => (b.st.rank - 2.5 * dist(b.s.pos, w.pos)) - (a.st.rank - 2.5 * dist(a.s.pos, w.pos)))[0];
+      let warning = null;
+      if (!dest) warning = 'no open shelter has room, coordinator must choose';
+      else if (clinical && !capable.length) warning = 'no shelter with medical cover has room';
       remaining.set(v.id, remaining.get(v.id) - need);
-      assignments.push({ person: w, vehicle: v, shelter: dest ? dest.s : null, score: row.result.score, band: row.result.band });
-    }
+      if (dest) room.set(dest.s.id, room.get(dest.s.id) - people);
+      assignments.push({ person: w, vehicle: v, shelter: dest ? dest.s : null, score: row.result.score, band: row.result.band, warning });
+    });
     return { assignments, unassigned, seatsLeft: Object.fromEntries(remaining) };
   }
 

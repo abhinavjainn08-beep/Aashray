@@ -29,6 +29,10 @@
   const water = root.querySelector('.try-water');
   list.style.height = ROW * SHOW + 'px';
 
+  const note = document.createElement('p');
+  note.className = 'try-note';
+  root.querySelector('.try-control').appendChild(note);
+
   const els = new Map();
   people.forEach(p => {
     const li = document.createElement('li');
@@ -48,6 +52,10 @@
     for (const w in share) hazard[w] = Math.min(1, v * share[w] * 1.0);
     const rows = T.rankQueue(people.map(p => ({ ...p, requestedAt: 0 })), { hazardByWard: hazard, blockedWards: [], shelters, now: 0 });
     readout.textContent = levelName(+slider.value);
+    const hi = Math.round(12 * v), lo = Math.round(12 * v * .35);
+    note.textContent = v === 0
+      ? 'River is calm, so the order comes only from each woman\u2019s own needs (medical, pregnancy or newborn, mobility, age).'
+      : 'The river adds up to 12 points per woman by ward: +' + hi + ' in Riverside, Low Bazaar and Old Bridge, +' + lo + ' on higher ground. Her own needs (up to 80 points) never change, so a heavily pregnant woman on high ground can slip down while others in flooded wards rise.';
     water.style.setProperty('--lvl', v);
     slider.setAttribute('aria-valuetext', levelName(+slider.value));
     rows.forEach((r, i) => {
