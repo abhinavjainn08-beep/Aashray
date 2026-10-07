@@ -5,7 +5,7 @@
 Built by Abhinav Jain, second-year CSE (AIML), VIT Bhopal University, for the IEEE-MSB SAMWAD Ideathon, Problem Statement 5 (women's emergency evacuation and critical care).
 
 - Live demo: https://abhinavjainn08-beep.github.io/Aashray/
-- Explanation video: *(add the YouTube unlisted link here)*
+- Explanation video: https://youtu.be/vdGZuFWJsvc
 
 ## The problem
 
